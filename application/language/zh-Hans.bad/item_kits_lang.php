@@ -1,0 +1,35 @@
+<?php 
+
+$lang["item_kits_add_item"] = "新增套装";
+$lang["item_kits_all"] = "全部";
+$lang["item_kits_cannot_be_deleted"] = "無法刪除套装";
+$lang["item_kits_confirm_delete"] = "你確定你要刪除選取的套装嗎？";
+$lang["item_kits_confirm_restore"] = "確定你要恢复選取的套装嗎？";
+$lang["item_kits_description"] = "套装描述";
+$lang["item_kits_discount"] = "折扣";
+$lang["item_kits_discount_fixed"] = "固定折扣";
+$lang["item_kits_discount_percent"] = "折扣率";
+$lang["item_kits_discount_type"] = "折扣类型";
+$lang["item_kits_error_adding_updating"] = "新增/更新套装錯誤";
+$lang["item_kits_find_kit_item"] = "套装商品";
+$lang["item_kits_info"] = "套装資料";
+$lang["item_kits_item"] = "產品";
+$lang["item_kits_items"] = "產品";
+$lang["item_kits_kit"] = "Kit Id";
+$lang["item_kits_kit_and_components"] = "套装和Components";
+$lang["item_kits_kit_and_stock"] = "套装和仓库";
+$lang["item_kits_kit_only"] = "仅限套装";
+$lang["item_kits_name"] = "套装名称";
+$lang["item_kits_new"] = "新增套装";
+$lang["item_kits_no_item_kits_to_display"] = "沒有套装";
+$lang["item_kits_none_selected"] = "沒有選擇任何套装";
+$lang["item_kits_one_or_multiple"] = "套装";
+$lang["item_kits_price_option"] = "价格选项";
+$lang["item_kits_priced_only"] = "Priced Only";
+$lang["item_kits_print_option"] = "打印选项";
+$lang["item_kits_quantity"] = "數量";
+$lang["item_kits_sequence"] = "序列";
+$lang["item_kits_successful_adding"] = "新增套装成功";
+$lang["item_kits_successful_deleted"] = "刪除成功";
+$lang["item_kits_successful_updating"] = "更新套装成功";
+$lang["item_kits_update"] = "更新套装";
