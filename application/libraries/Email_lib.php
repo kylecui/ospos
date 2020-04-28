@@ -39,53 +39,25 @@ class Email_lib
 	 */
 	public function sendEmail($to, $subject, $message, $attachment = NULL)
 	{
-		require 'class.smtp.php';
-		require 'class.phpmailer.php';
-        $mail = new PHPMailer();
-        $mail->isSMTP();
-        $mail->SMTPDebug = 0;
-		$mail->Debugoutput = 'html';
-        $mail->SMTPAuth = true;
-        $mail->Host = "smtp.exmail.qq.com";
-		$mail->Port = 465;
-		$mail->SMTPSecure = 'ssl';
-        $mail->addAddress($to);
+		$email = $this->CI->email;
+
+		$email->from($this->CI->config->item('email'), $this->CI->config->item('company'));
+		$email->to($to);
+		$email->subject($subject);
+		$email->message($message);
 		if(!empty($attachment))
 		{
-			$mail->addStringAttachment($attachment);
+			$email->attach($attachment);
 		}
-		$mail->Username = "service@cxzlife.cn";
-		$mail->Password = "cici0405";
-		$mail->setFrom('no-reply-service@cxzlife.cn', 'CiCi Jewelry');
-		$mail->addReplyTo('no-reply-service@cxzlife.cn', 'CiCi Jewelry');
-        $mail->Subject = $subject;
-        $mail->msgHTML($message);
-        // $mail->send();
-		$result = $mail->send();
+
+		$result = $email->send();
+
 		if(!$result)
 		{
 			error_log($email->print_debugger());
 		}
+
 		return $result;
-		// $email = $this->CI->email;
-
-		// $email->from($this->CI->config->item('email'), $this->CI->config->item('company'));
-		// $email->to($to);
-		// $email->subject($subject);
-		// $email->message($message);
-		// if(!empty($attachment))
-		// {
-		// 	$email->attach($attachment);
-		// }
-
-		// $result = $email->send();
-
-		// if(!$result)
-		// {
-		// 	error_log($email->print_debugger());
-		// }
-
-		// return $result;
 	}
 }
 
