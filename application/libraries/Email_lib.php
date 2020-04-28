@@ -46,8 +46,9 @@ class Email_lib
         $mail->SMTPDebug = 0;
 		$mail->Debugoutput = 'html';
         $mail->SMTPAuth = true;
-        $mail->Host = "localhost";
-        $mail->Port = 25;
+        $mail->Host = "smtp.exmail.qq.com";
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'ssl';
         $mail->addAddress($to);
 		if(!empty($attachment))
 		{
@@ -59,7 +60,7 @@ class Email_lib
 		$mail->addReplyTo('no-reply-service@cxzlife.cn', 'CiCi Jewelry');
         $mail->Subject = $subject;
         $mail->msgHTML($message);
-        $mail->send();
+        // $mail->send();
 		$result = $mail->send();
 		if(!$result)
 		{
