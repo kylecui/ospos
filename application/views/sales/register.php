@@ -221,7 +221,7 @@ if(isset($success))
 							<td><a href="javascript:document.getElementById('<?php echo 'cart_'.$line ?>').submit();" title=<?php echo $this->lang->line('sales_update')?> ><span class="glyphicon glyphicon-refresh"></span></a></td>
 							
 							<td>
-								<?php echo form_checkbox(array('id'=>'item_free', 'name'=>'item_free', 'value'=>1, 'data-line'=>$line)); ?>
+								<?php echo form_checkbox(array('id'=>'item_free', 'name'=>'item_free', 'value'=>1, 'data-line'=>$line, 'checked'=>($item['discount_type']==0)&&($item['discount']==100))); ?>
 							</td>
 							</tr>
 							<tr>
@@ -707,19 +707,20 @@ $(document).ready(function()
 		});
 	});
 
+// kylecui:
+// handle checkbox of gift item. 
 	$("input[name='item_free']").change(function(){
 
-		//if($(this).attr('checked')==true)
-		//{
-			//enable 100% discount
+		if($(this).prop('checked'))
+		{
+			// it is already a gift. set it to regular item. 
+			$(this).parents("tr").find("input[name='discount']").val(0);
+		}
+		else
+		{
 			$(this).parents("tr").find("input[name='discount']").val(100);
 			$(this).parents("tr").find("input[name='discount_toggle']:checked").val(false)
-		//}
-		//else
-		//{
-		//	$(this).parents("tr").find("input[name='discount']").val(0);
-		//}
-
+		}
 		var input = $("<input>").attr("type", "hidden").attr("name", "discount_type").val($(this).parents("tr").find("input[name='discount_toggle']").prop('checked')?1:0);
 		$('#cart_'+ $(this).attr('data-line')).append($(input));
 		$('#cart_'+ $(this).attr('data-line')).submit();
