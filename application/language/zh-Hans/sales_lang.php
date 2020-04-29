@@ -178,3 +178,4 @@ $lang["sales_work_order_number"] = "工单编号";
 $lang["sales_work_order_number_duplicate"] = "工单编号不能重复";
 $lang["sales_work_order_sent"] = "工单已发送到";
 $lang["sales_work_order_unsent"] = "工单发送失败";
+$lang["sales_free_gift"] = "赠品";

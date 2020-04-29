@@ -105,14 +105,15 @@ if(isset($success))
 	<table class="sales_table_100" id="register">
 		<thead>
 			<tr>
-				<th style="width: 5%;"><?php echo $this->lang->line('common_delete'); ?></th>
-				<th style="width: 15%;"><?php echo $this->lang->line('sales_item_number'); ?></th>
+				<th style="width: 3%;"><?php echo $this->lang->line('common_delete'); ?></th>
+				<th style="width: 13%;"><?php echo $this->lang->line('sales_item_number'); ?></th>
 				<th style="width: 30%;"><?php echo $this->lang->line('sales_item_name'); ?></th>
 				<th style="width: 10%;"><?php echo $this->lang->line('sales_price'); ?></th>
 				<th style="width: 10%;"><?php echo $this->lang->line('sales_quantity'); ?></th>
 				<th style="width: 15%;"><?php echo $this->lang->line('sales_discount'); ?></th>
 				<th style="width: 10%;"><?php echo $this->lang->line('sales_total'); ?></th>
-				<th style="width: 5%;"><?php echo $this->lang->line('sales_update'); ?></th>
+				<th style="width: 4%;"><?php echo $this->lang->line('sales_update'); ?></th>
+				<th style="width: 4%;"><?php echo $this->lang->line('sales_free_gift'); ?></th>
 			</tr>
 		</thead>
 
@@ -135,7 +136,7 @@ if(isset($success))
 			?>
 
 					<?php echo form_open($controller_name."/edit_item/$line", array('class'=>'form-horizontal', 'id'=>'cart_'.$line)); ?>
-						<tr>
+						<tr id="<?php echo 'cart_'.$line.'_row'?>">
 							<td>
 								<?php echo anchor($controller_name . "/delete_item/$line", '<span class="glyphicon glyphicon-trash"></span>'); ?>
 								<?php echo form_hidden('location', $item['item_location']); ?>
@@ -218,6 +219,7 @@ if(isset($success))
 							</td>
 							
 							<td><a href="javascript:document.getElementById('<?php echo 'cart_'.$line ?>').submit();" title=<?php echo $this->lang->line('sales_update')?> ><span class="glyphicon glyphicon-refresh"></span></a></td>
+							<td><input type=checkbox name="item_free"></td>
 							</tr>
 							<tr>
 							<?php
@@ -701,6 +703,20 @@ $(document).ready(function()
 			dataType: 'json'
 		});
 	});
+
+	$("input[name='item_free']").change(function()){
+
+		if($(this).attr('checked')==true)
+		{
+			//enable 100% discount
+			$(this).parents("tr").find("input[name='discount']").val(100);
+			$(this).parents("tr").find("input[name='discount_toggle]:checked").val(false)
+		}
+		else
+		{
+			$(this).parents("tr").find("input[name='discount']").val(0);
+		}
+	}
 
 	$('#item').focus();
 
