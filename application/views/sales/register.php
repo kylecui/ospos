@@ -704,7 +704,7 @@ $(document).ready(function()
 		});
 	});
 
-	$("input[name='item_free']").change(function()){
+	$("input[name='item_free']").change(function(){
 
 		if($(this).attr('checked')==true)
 		{
