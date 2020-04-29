@@ -113,6 +113,7 @@ if(isset($success))
 				<th style="width: 15%;"><?php echo $this->lang->line('sales_discount'); ?></th>
 				<th style="width: 10%;"><?php echo $this->lang->line('sales_total'); ?></th>
 				<th style="width: 4%;"><?php echo $this->lang->line('sales_update'); ?></th>
+				<!-- add one more column, for gift item. -->
 				<th style="width: 4%;"><?php echo $this->lang->line('sales_free_gift'); ?></th>
 			</tr>
 		</thead>
@@ -123,7 +124,8 @@ if(isset($success))
 			{
 			?>
 				<tr>
-					<td colspan='8'>
+					<!-- add one more column, for gift item. -->
+					<td colspan='9'>
 						<div class='alert alert-dismissible alert-info'><?php echo $this->lang->line('sales_no_items_in_cart'); ?></div>
 					</td>
 				</tr>
@@ -136,7 +138,7 @@ if(isset($success))
 			?>
 
 					<?php echo form_open($controller_name."/edit_item/$line", array('class'=>'form-horizontal', 'id'=>'cart_'.$line)); ?>
-						<tr id="<?php echo 'cart_'.$line.'_row'?>">
+						<tr>
 							<td>
 								<?php echo anchor($controller_name . "/delete_item/$line", '<span class="glyphicon glyphicon-trash"></span>'); ?>
 								<?php echo form_hidden('location', $item['item_location']); ?>
@@ -717,6 +719,7 @@ $(document).ready(function()
 			// we now set it to a gift.
 			$(this).parents("tr").find("input[name='discount']").val(100);
 			$(this).parents("tr").find("input[name='discount_toggle']:checked").val(false)
+			
 		}
 		else
 		{
