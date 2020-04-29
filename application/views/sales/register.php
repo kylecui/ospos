@@ -713,13 +713,15 @@ $(document).ready(function()
 
 		if($(this).prop('checked'))
 		{
-			// it is already a gift. set it to regular item. 
-			$(this).parents("tr").find("input[name='discount']").val(0);
+			// means, it was unchecked before the change event therefore it is a regular item. 
+			// we now set it to a gift.
+			$(this).parents("tr").find("input[name='discount']").val(100);
+			$(this).parents("tr").find("input[name='discount_toggle']:checked").val(false)
 		}
 		else
 		{
-			$(this).parents("tr").find("input[name='discount']").val(100);
-			$(this).parents("tr").find("input[name='discount_toggle']:checked").val(false)
+			// it is already a gift. set it to regular item. 
+			$(this).parents("tr").find("input[name='discount']").val(0);
 		}
 		var input = $("<input>").attr("type", "hidden").attr("name", "discount_type").val($(this).parents("tr").find("input[name='discount_toggle']").prop('checked')?1:0);
 		$('#cart_'+ $(this).attr('data-line')).append($(input));
