@@ -716,7 +716,7 @@ $(document).ready(function()
 		{
 			$(this).parents("tr").find("input[name='discount']").val(0);
 		}
-	}
+	});
 
 	$('#item').focus();
 
