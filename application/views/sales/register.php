@@ -219,7 +219,10 @@ if(isset($success))
 							</td>
 							
 							<td><a href="javascript:document.getElementById('<?php echo 'cart_'.$line ?>').submit();" title=<?php echo $this->lang->line('sales_update')?> ><span class="glyphicon glyphicon-refresh"></span></a></td>
-							<td><input type=checkbox name="item_free"></td>
+							
+							<td>
+								<?php echo form_checkbox(array('id'=>'item_free', 'name'=>'item_free', 'value'=>1, 'data-line'=>$line)); ?>
+							</td>
 							</tr>
 							<tr>
 							<?php
@@ -716,6 +719,10 @@ $(document).ready(function()
 		{
 			$(this).parents("tr").find("input[name='discount']").val(0);
 		}
+
+		var input = $("<input>").attr("type", "hidden").attr("name", "discount_type").val(($(this).prop('checked'))?1:0);
+		$('#cart_'+ $(this).attr('data-line')).append($(input));
+		$('#cart_'+ $(this).attr('data-line')).submit();
 	});
 
 	$('#item').focus();
