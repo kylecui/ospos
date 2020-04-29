@@ -709,18 +709,18 @@ $(document).ready(function()
 
 	$("input[name='item_free']").change(function(){
 
-		if($(this).attr('checked')==true)
-		{
+		//if($(this).attr('checked')==true)
+		//{
 			//enable 100% discount
 			$(this).parents("tr").find("input[name='discount']").val(100);
-			$(this).parents("tr").find("input[name='discount_toggle]:checked").val(false)
-		}
-		else
-		{
-			$(this).parents("tr").find("input[name='discount']").val(0);
-		}
+			$(this).parents("tr").find("input[name='discount_toggle']:checked").val(false)
+		//}
+		//else
+		//{
+		//	$(this).parents("tr").find("input[name='discount']").val(0);
+		//}
 
-		var input = $("<input>").attr("type", "hidden").attr("name", "discount_type").val(($(this).prop('checked'))?1:0);
+		var input = $("<input>").attr("type", "hidden").attr("name", "discount_type").val($(this).parents("tr").find("input[name='discount_toggle']").prop('checked')?1:0);
 		$('#cart_'+ $(this).attr('data-line')).append($(input));
 		$('#cart_'+ $(this).attr('data-line')).submit();
 	});
