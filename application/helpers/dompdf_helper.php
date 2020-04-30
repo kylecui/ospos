@@ -16,6 +16,8 @@ function create_pdf($html, $filename = '')
 
     $dompdf = new Dompdf\Dompdf();
     $dompdf->loadHtml(str_replace(array("\n", "\r"), '', $html));
+    //Setup the paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
 
     if(!$magic_quotes_enabled)
