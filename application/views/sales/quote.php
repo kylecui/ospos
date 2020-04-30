@@ -186,20 +186,27 @@ if (isset($error_message))
 		<?php
 		$only_sale_check = FALSE;
 		$show_giftcard_remainder = FALSE;
+		$total_paid_amount = 0;
 		foreach($payments as $payment_id=>$payment)
 		{
 			$only_sale_check |= $payment['payment_type'] == $this->lang->line('sales_check');
 			$splitpayment = explode(':', $payment['payment_type']);
 			$show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
+			$total_paid_amount += $payment['payment_amount']
 		?>
 			<tr>
 				<td colspan="<?php echo $quote_columns-3; ?>" class="blank"> </td>
-				<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $splitpayment[0]; ?></textarea></td>
+				<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_paid_amount')."（".$splitpayment[0]."）"; ?></textarea></td>
 				<td class="total-value"><textarea rows="5" cols="6" id="paid"><?php echo to_currency( $payment['payment_amount'] ); ?></textarea></td>
 			</tr>
 		<?php
 		}
 		?>
+			<tr>
+				<td colspan="<?php echo $quote_columns-3; ?>" class="blank"> </td>
+				<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_to_be_paid'); ?></textarea></td>
+				<td class="total-value"><textarea rows="5" cols="6" id="paid"><?php echo to_currency( $total-$total_paid_amount ); ?></textarea></td>
+			</tr>
 	</table>
 	<div id="terms">
 		<div id="sale_return_policy">

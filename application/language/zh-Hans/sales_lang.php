@@ -179,3 +179,5 @@ $lang["sales_work_order_number_duplicate"] = "工单编号不能重复";
 $lang["sales_work_order_sent"] = "工单已发送到";
 $lang["sales_work_order_unsent"] = "工单发送失败";
 $lang["sales_free_gift"] = "赠品";
+$lang["sales_paid_amount"] = "已付款";
+$lang["sales_to_be_paid"] = "应付款";
